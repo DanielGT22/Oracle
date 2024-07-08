@@ -8,8 +8,9 @@ import OpponentAmulet from "./OpponentAmulet"
 import PlayerTower from "./PlayerTower"
 import PlayerAmulet from "./PlayerAmulet"
 import './GameBoard.css';
+import OpponentHand from './OpponentHand';
+import PlayerHand from './PlayerHand';
 
-// Define the updated board layout
 const boardLayout = [
   ['x', 'x', 'opponentOracle', 'x', 'x', 'x'],
   ['OpponentAmulet', 'card', 'card', 'card', 'card', 'OpponentTower'],
@@ -19,8 +20,6 @@ const boardLayout = [
   ['PlayerTower', 'card', 'card', 'card', 'card', 'PlayerAmulet'],
   ['x', 'x', 'playerOracle', 'x', 'x', 'x'],
 ];
-
-// Sample deck of cards
 const initialDeck = [
   { id: 1, value: 'A' },
   { id: 2, value: '2' },
@@ -66,9 +65,14 @@ const shuffleDeck = (deck) => {
 
 const GameBoard = () => {
   const [deck, setDeck] = useState([]);
+  const [opponentHand, setOpponentHand] = useState([]);
+  const [playerHand, setPlayerHand] = useState([]);
 
   useEffect(() => {
-    setDeck(shuffleDeck(initialDeck));
+    const shuffledDeck = shuffleDeck(initialDeck);
+    setDeck(shuffledDeck);
+    setOpponentHand(shuffledDeck.slice(0, 6)); // Assign first 6 cards to opponent's hand
+    setPlayerHand(shuffledDeck.slice(6, 12)); // Assign next 6 cards to player's hand
   }, []);
 
   const handleCardClick = (value) => {
@@ -76,7 +80,7 @@ const GameBoard = () => {
   };
 
   const renderBoard = () => {
-    let cardIndex = 0;
+    let cardIndex = 12; // Start after the hands
 
     return boardLayout.map((row, rowIndex) => (
       <div key={rowIndex} className="board-row">
@@ -143,7 +147,13 @@ const GameBoard = () => {
     ));
   };
 
-  return <div className="game-board">{renderBoard()}</div>;
+  return (
+    <div className="game-board">
+      <OpponentHand cards={opponentHand} onCardClick={handleCardClick} />
+      {renderBoard()}
+      <PlayerHand cards={playerHand} onCardClick={handleCardClick} />
+    </div>
+  );
 };
 
 export default GameBoard;

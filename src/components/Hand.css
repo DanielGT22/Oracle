@@ -1,0 +1,15 @@
+/* src/components/Hand.css */
+.hand {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .opponent-hand {
+    margin-top: 20px;
+  }
+  
+  .player-hand {
+    margin-bottom: 20px;
+  }
+  
