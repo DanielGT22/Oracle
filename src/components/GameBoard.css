@@ -1,0 +1,22 @@
+/* src/components/GameBoard.css */
+.game-board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.board-row {
+  display: flex;
+}
+
+.cell {
+  width: 100px;
+  height: 150px;
+  margin: 10px;
+}
+
+.empty-cell {
+  border: none;
+  background-color: transparent;
+}

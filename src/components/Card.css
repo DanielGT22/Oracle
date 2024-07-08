@@ -1,0 +1,17 @@
+/* src/components/Card.css */
+.card {
+  width: 100px;
+  height: 150px;
+  border: 1px solid #000;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
