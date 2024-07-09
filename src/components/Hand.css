@@ -1,15 +1,22 @@
 /* src/components/Hand.css */
 .hand {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  
-  .opponent-hand {
-    margin-top: 20px;
-  }
-  
-  .player-hand {
-    margin-bottom: 20px;
-  }
-  
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.opponent-hand {
+  margin-top: 20px;
+}
+
+.player-hand {
+  margin-bottom: 20px;
+}
+
+.card {
+  border: 1px solid #000;
+  padding: 20px;
+  margin: 5px;
+  text-align: center;
+  cursor: pointer;
+}
