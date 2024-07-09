@@ -10,14 +10,15 @@ import PlayerAmulet from "./PlayerAmulet"
 import './GameBoard.css';
 import OpponentHand from './OpponentHand';
 import PlayerHand from './PlayerHand';
+import Empty from './Empty';
 
 const boardLayout = [
   ['x', 'x','x', 'opponentOracle', 'x', 'x', 'x'],
-  ['OpponentAmulet','x',  'card', 'card', 'card', 'card','x',  'OpponentTower'],
-  ['x', 'card', 'card', 'card', 'card', 'x'],
-  ['x', 'card', 'card', 'card', 'card', 'x'],
-  ['x', 'card', 'card', 'card', 'card', 'x'],
-  ['PlayerTower','x',  'card', 'card', 'card', 'card','x',  'PlayerAmulet'],
+  ['OpponentAmulet','x',  'empty', 'empty', 'empty', 'empty','x',  'OpponentTower'],
+  ['x', 'empty', 'empty', 'empty', 'empty', 'x'],
+  ['x', 'empty', 'empty', 'empty', 'empty', 'x'],
+  ['x', 'empty', 'empty', 'empty', 'empty', 'x'],
+  ['PlayerTower','x',  'empty', 'empty', 'empty', 'empty','x',  'PlayerAmulet'],
   ['x', 'x', 'x', 'playerOracle', 'x', 'x', 'x'],
 ];
 const initialDeck = [
@@ -112,10 +113,18 @@ const GameBoard = () => {
             const card = deck[cardIndex++];
             return (
               <Card key={cellIndex} 
-               value={card.value} 
+               value={card.name} 
                onClick={() => handleCardClick(card.value)} />
             );
-          }  else if (cell === 'OpponentAmulet' && cardIndex < deck.length) {
+          } else if (cell === 'empty' && cardIndex < deck.length) {
+            const card = deck[cardIndex++];
+            return (
+              <Empty key={cellIndex} 
+               value={card.health} 
+               onClick={() => handleCardClick(card.value)} />
+            );
+          }  
+           else if (cell === 'OpponentAmulet' && cardIndex < deck.length) {
             const card = deck[cardIndex++];
             return (
               <OpponentAmulet key={cellIndex} 
